@@ -49,6 +49,13 @@ func NewWorkArgs(name, namespace string) *WorkArgs {
 	}
 }
 
+// NewWorkArgsWithUID is a helper function to create new `WorkArgs` with a UID.
+func NewWorkArgsWithUID(name, namespace string, uid types.UID) *WorkArgs {
+	return &WorkArgs{
+		Object: NamespacedObject{NamespacedName: types.NamespacedName{Namespace: namespace, Name: name}, UID: uid},
+	}
+}
+
 // TimedWorker is a responsible for executing a function no earlier than at FireAt time.
 type TimedWorker struct {
 	WorkItem  *WorkArgs
